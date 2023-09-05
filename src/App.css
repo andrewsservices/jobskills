@@ -2,37 +2,58 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+form.MuiBox-root.css-xn6ruc,.skill,.count-and-close,.job-buttons,span.MuiBox-root.css-15y4xrm {
+  display:flex;
   align-items: center;
+}
+
+form.MuiBox-root.css-xn6ruc,.skill,.count-and-close,.job-buttons{
+  align-items: center;
+}
+
+.job-buttons,.skill{
+  justify-content: space-between;
+}
+
+form.MuiBox-root.css-xn6ruc{
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.skill,span.MuiBox-root.css-15y4xrm{
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+span.MuiBox-root.css-15y4xrm{
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.skill{
+  padding: 5px;
+}
+
+.skill h2{
+  margin: 0;
+}
+
+.css-15y4xrm{
+  padding: 0 !important;
+}
+
+.job{
+  width: 300px;
+}
+
+.skillList{
+  width: 100%;
+  margin: 0 auto;
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.job-buttons{
+  margin: 50px 0;
 }

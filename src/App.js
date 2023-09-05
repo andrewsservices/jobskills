@@ -1,24 +1,59 @@
-import logo from './logo.svg';
 import './App.css';
+import Form from './Form'
+import JobsContainer from './JobsContainer'
+
+import {useState} from 'react'
 
 function App() {
+
+const inputType = "job"
+const [job,setJob] = useState("")
+const [jobs,setJobs] = useState([])
+
+
+const onInputChange = (e) => {
+  setJob(e)
+}
+
+const submitInput = (e) => {
+  e.preventDefault()
+  setJobs([...jobs,job.toUpperCase()])
+  setJob("")
+}
+
+const deleteJob = (job) => {
+  let newJobsArray = []
+  jobs.filter(j=>{
+    if(j!==job){
+      newJobsArray.push(j)
+    }
+  })
+  setJobs(newJobsArray)
+}
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form
+        inputType={inputType}
+        onInputChange={(e)=>onInputChange(e)}
+        submitInput={(e)=>submitInput(e)}
+        value={job}
+      />
+      {
+        jobs.length !== 0
+        ?
+        <JobsContainer
+          jobs={jobs}
+          deleteJob={(e)=>deleteJob(e)}
+        />
+        :
+        null
+      }
+
     </div>
+
   );
 }
 
