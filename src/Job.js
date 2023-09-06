@@ -51,6 +51,7 @@ function Job({job,deleteJob}) {
       if(s !== requiredSkill){
          newRequiredSkillsArray.push(s)
       }
+      return false
     })
      setRequiredSkills(newRequiredSkillsArray)
   }
@@ -61,6 +62,7 @@ function Job({job,deleteJob}) {
       if(s !== niceToHaveSkill){
         newNiceToHaveSkillsArray.push(s)
       }
+      return false
     })
     setNiceToHaveSkills(newNiceToHaveSkillsArray)
   }

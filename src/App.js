@@ -28,6 +28,7 @@ const deleteJob = (job) => {
     if(j!==job){
       newJobsArray.push(j)
     }
+    return false
   })
   setJobs(newJobsArray)
 }
