@@ -14,6 +14,7 @@ export default function Skill({skill,deleteSkill}) {
     setCount(count+1)
   }
 
+
   return (
 
       <div className="skill">

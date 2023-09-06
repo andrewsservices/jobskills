@@ -2,12 +2,11 @@
   text-align: center;
 }
 
-form.MuiBox-root.css-xn6ruc,.skill,.count-and-close,.job-buttons,span.MuiBox-root.css-15y4xrm {
+.jobsContainer,.inputForm,.skill,.count-and-close,.job-buttons,.skillList{
   display:flex;
-  align-items: center;
 }
 
-form.MuiBox-root.css-xn6ruc,.skill,.count-and-close,.job-buttons{
+.MuiBox-root.css-xn6ruc,.skill,.count-and-close,.job-buttons{
   align-items: center;
 }
 
@@ -15,18 +14,29 @@ form.MuiBox-root.css-xn6ruc,.skill,.count-and-close,.job-buttons{
   justify-content: space-between;
 }
 
-form.MuiBox-root.css-xn6ruc{
-  flex-direction: column;
+.jobsContainer{
+  justify-content: space-around;
+}
+
+.jobsContainer,.skillList{
+  align-items: flex-start;
+}
+
+.inputForm,.skillList{
   justify-content: center;
 }
 
-.skill,span.MuiBox-root.css-15y4xrm{
-  width: 100%;
+.inputForm button{
+  width: 20px !important
 }
 
-span.MuiBox-root.css-15y4xrm{
-  justify-content: space-around;
-  align-items: flex-start;
+.jobsContainer{
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.skill{
+  width: 100%;
 }
 
 .skill{
@@ -37,10 +47,6 @@ span.MuiBox-root.css-15y4xrm{
   margin: 0;
 }
 
-.css-15y4xrm{
-  padding: 0 !important;
-}
-
 .job{
   width: 300px;
 }
@@ -48,9 +54,6 @@ span.MuiBox-root.css-15y4xrm{
 .skillList{
   width: 100%;
   margin: 0 auto;
-  display:flex;
-  justify-content: center;
-  align-items: flex-start;
   flex-direction: column;
 }
 

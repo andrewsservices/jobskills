@@ -1,6 +1,7 @@
 import './App.css';
 import Form from './Form'
 import JobsContainer from './JobsContainer'
+import Divider from '@mui/material/Divider';
 
 import {useState} from 'react'
 
@@ -44,10 +45,14 @@ const deleteJob = (job) => {
       {
         jobs.length !== 0
         ?
-        <JobsContainer
-          jobs={jobs}
-          deleteJob={(e)=>deleteJob(e)}
-        />
+        <>
+          <Divider variant="middle" />
+          <JobsContainer
+            jobs={jobs}
+            deleteJob={(e)=>deleteJob(e)}
+          />
+        </>
+
         :
         null
       }
