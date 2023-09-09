@@ -2,9 +2,9 @@ import Button from '@mui/material/Button';
 
 import {useState} from 'react'
 
-export default function Skill({skill,deleteSkill}) {
+export default function Skill({skill,sendSkillsandCount,deleteSkill}) {
 
-  const [count, setCount] = useState(0)
+  const [count,setCount] = useState(0)
 
   const onDelete = () => {
     deleteSkill(skill)
@@ -12,8 +12,8 @@ export default function Skill({skill,deleteSkill}) {
 
   const increaseCount = () => {
     setCount(count+1)
+    sendSkillsandCount([skill,count])
   }
-
 
   return (
 

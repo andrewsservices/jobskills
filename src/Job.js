@@ -2,7 +2,7 @@ import Form from './Form'
 import SkillList from './SkillList'
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
-import SortListButton from './SortListButton';
+import Button from '@mui/material/Button';
 import DeleteButton from './DeleteButton'
 
 import {useState} from 'react'
@@ -16,9 +16,13 @@ function Job({job,deleteJob}) {
   const [requiredSkill,setRequiredSkill] = useState("")
   const [requiredSkills,setRequiredSkills] = useState([])
 
+  const [skillsAndCount,setSkillsAndCount] = useState([])
+
+
   const niceToHaveSkillInput = "Nice To Have"
   const [niceToHaveSkill,setNiceToHaveSkill] = useState("")
   const [niceToHaveSkills,setNiceToHaveSkills] = useState([])
+
 
 
   const onRequiredSkillChange = (s) => {
@@ -29,6 +33,8 @@ function Job({job,deleteJob}) {
     setNiceToHaveSkill(s)
   }
 
+
+  // SUBMIT REQUIRED SKILL
   const submitRequiredSKill = (e) => {
     e.preventDefault()
     if(requiredSkill.length > 0){
@@ -37,6 +43,44 @@ function Job({job,deleteJob}) {
     setRequiredSkill("")
   }
 
+
+
+
+  // SUBMIT SKILL WITH COUNT
+
+  const sendSkillsandCount = (e) => {
+    setSkillsAndCount([...skillsAndCount,e])
+  }
+
+  const submitSkillWithCount = () => {
+    let myArr = []
+    requiredSkills.map((s)=>{
+      let skArray = []
+      let largestInArray = ''
+      skillsAndCount.filter((sk)=>{
+        if(s===sk[0]){
+          skArray.push(sk)
+          largestInArray = skArray[skArray.length-1]
+        }
+        return largestInArray
+      })
+      myArr = [...myArr,largestInArray]
+      return myArr
+    })
+    const sortedArr = myArr.sort((a,b)=>b[1]-a[1])
+    let sortedSkillsArr = []
+    sortedArr.map((s)=>{
+      sortedSkillsArr.push(s[0])
+      return sortedSkillsArr
+    })
+    setRequiredSkills(sortedSkillsArr)
+  }
+
+
+
+
+
+  // SUBMIT NICE TO HAVE SKILL
   const submitNiceToHaveSkill = (e) => {
     e.preventDefault()
     if(niceToHaveSkill.length > 0){
@@ -45,6 +89,7 @@ function Job({job,deleteJob}) {
     setNiceToHaveSkill("")
   }
 
+  // DELETE REQUIRED SKILL
   const deleteRequiredSkill = (requiredSkill) => {
     let newRequiredSkillsArray = []
     requiredSkills.filter((s)=>{
@@ -56,6 +101,7 @@ function Job({job,deleteJob}) {
      setRequiredSkills(newRequiredSkillsArray)
   }
 
+  // DELETE NICE TO HAVE SKILL
   const deleteNiceToHaveSkill = (niceToHaveSkill) => {
     let newNiceToHaveSkillsArray = []
     niceToHaveSkills.filter((s)=>{
@@ -67,12 +113,13 @@ function Job({job,deleteJob}) {
     setNiceToHaveSkills(newNiceToHaveSkillsArray)
   }
 
+
+
+
+  // DELETE
   const onDelete = () => {
     deleteJob(job)
   }
-
-
-
 
 
 
@@ -91,8 +138,14 @@ function Job({job,deleteJob}) {
       <SkillList
         skillArray={requiredSkills}
         deleteSkill={(e)=>deleteRequiredSkill(e)}
+        sendSkillsandCount={(e)=>sendSkillsandCount(e)}
       />
 
+      <Button variant="contained" color="success"
+        onClick={(e)=>submitSkillWithCount(e)}
+      >
+        Sort
+      </Button>
 
       <Divider variant="middle" />
 
@@ -107,19 +160,15 @@ function Job({job,deleteJob}) {
       <SkillList
         skillArray={niceToHaveSkills}
         deleteSkill={(e)=>deleteNiceToHaveSkill(e)}
+
       />
 
       <Divider variant="middle" />
 
-      <div className="job-buttons">
-        <SortListButton
-
-        />
-        <DeleteButton
+      <DeleteButton
           deleteType={deleteType}
           onDelete={()=>onDelete()}
         />
-      </div>
 
     </Box>
 

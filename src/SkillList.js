@@ -1,7 +1,6 @@
 import Skill from './Skill'
 
-
-const SkillList = ({skillArray,deleteSkill}) => {
+const SkillList = ({skillArray,deleteSkill,sendSkillsandCount}) => {
 
     const uniqueSkills = [...new Set(skillArray)]
 
@@ -15,6 +14,7 @@ const SkillList = ({skillArray,deleteSkill}) => {
                             skill={skill}
                             key={skill}
                             deleteSkill={(e)=>deleteSkill(e)}
+                            sendSkillsandCount={(e)=>sendSkillsandCount(e)}
                         />
                     )
 
