@@ -1,25 +1,19 @@
 import './App.css';
+import './Background.css'
+import magnifyingGlass from './search.png'
 import Form from './Form'
 import JobsContainer from './JobsContainer'
-import Divider from '@mui/material/Divider';
 
 import {useState} from 'react'
 
 function App() {
 
-const inputType = "job"
-const [job,setJob] = useState("")
+
 const [jobs,setJobs] = useState([])
 
 
-const onInputChange = (e) => {
-  setJob(e)
-}
-
 const submitInput = (e) => {
-  e.preventDefault()
-  setJobs([...jobs,job.toUpperCase()])
-  setJob("")
+  setJobs([...jobs,e.toUpperCase()])
 }
 
 const deleteJob = (job) => {
@@ -36,29 +30,51 @@ const deleteJob = (job) => {
 
 
   return (
-    <div className="App">
-      <Form
-        inputType={inputType}
-        onInputChange={(e)=>onInputChange(e)}
-        submitInput={(e)=>submitInput(e)}
-        value={job}
-      />
+    <>
+      <div className="background">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div className='foreground'>
+      <div class="job-form">
+        <h2>Job Skills App</h2>
+        <img src={magnifyingGlass} alt="logo"/>
+        <Form
+          inputType="job"
+          sendInput={(e)=>submitInput(e)}
+        />
+      </div>
+
       {
         jobs.length !== 0
         ?
-        <>
-          <Divider variant="middle" />
           <JobsContainer
             jobs={jobs}
             deleteJob={(e)=>deleteJob(e)}
           />
-        </>
-
         :
         null
       }
-
     </div>
+    </>
+
 
   );
 }

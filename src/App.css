@@ -1,12 +1,36 @@
-.App {
+h1,h2{
   text-align: center;
 }
 
-.jobsContainer,.inputForm,.skill,.count-and-close,.job-buttons,.skillList{
+.foreground{
+  position:absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.skillList,.job-form{
+  margin: 0 auto;
+}
+
+.job-form,.job{
+  background-color: white;
+  width: 300px;
+}
+
+.job-form img{
+  width: 50px;
+  margin: 0 auto;
+}
+
+.job-form,.jobsContainer,.inputForm,.skill,.count-and-close,.job-buttons,.skillList,.buttons{
   display:flex;
 }
 
-.MuiBox-root.css-xn6ruc,.skill,.count-and-close,.job-buttons{
+.job-form,.buttons,.skillList{
+  flex-direction: column;
+}
+
+.job-form,.MuiBox-root.css-xn6ruc,.skill,.count-and-close,.job-buttons,.buttons{
   align-items: center;
 }
 
@@ -14,7 +38,7 @@
   justify-content: space-between;
 }
 
-.jobsContainer{
+.jobsContainer,.buttons{
   justify-content: space-around;
 }
 
@@ -47,16 +71,14 @@
   margin: 0;
 }
 
-.job{
-  width: 300px;
-}
-
 .skillList{
   width: 100%;
   margin: 0 auto;
-  flex-direction: column;
 }
 
-.job-buttons{
-  margin: 50px 0;
+.buttons{
+  height: 100px;
 }
+
+
+

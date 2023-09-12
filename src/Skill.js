@@ -1,8 +1,7 @@
 import Button from '@mui/material/Button';
 
 import {useState} from 'react'
-
-export default function Skill({skill,sendSkillsandCount,deleteSkill}) {
+export default function Skill({skill,deleteSkill,updateCount}) {
 
   const [count,setCount] = useState(0)
 
@@ -12,7 +11,10 @@ export default function Skill({skill,sendSkillsandCount,deleteSkill}) {
 
   const increaseCount = () => {
     setCount(count+1)
-    sendSkillsandCount([skill,count])
+  }
+
+  if(count > 0){
+    updateCount([skill,count])
   }
 
   return (
@@ -25,7 +27,7 @@ export default function Skill({skill,sendSkillsandCount,deleteSkill}) {
         </Button>
         <div className="count-and-close">
           {
-            count !== 0
+            count > 0
             ?
             <h2>{count}</h2>
             :

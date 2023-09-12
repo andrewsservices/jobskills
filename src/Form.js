@@ -2,13 +2,31 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
+import {useState} from 'react'
 
+const Form = ({inputType,sendInput,sendSkillandCount}) => {
 
-const Form = ({inputType,onInputChange,submitInput,value}) => {
+const [input,setInput] = useState('')
+
+const onChange = (e) => {
+    setInput(e.target.value)
+}
+
+let count = 0
+
+const submitInput = (e) => {
+    e.preventDefault()
+    if(inputType === "skill"){
+        sendSkillandCount([input.toUpperCase(),count])
+    } else {
+        sendInput(input)
+    }
+    setInput('')
+}
+
 
 
     return(
-
         <Box
             className="inputForm"
             component="form"
@@ -18,16 +36,35 @@ const Form = ({inputType,onInputChange,submitInput,value}) => {
             noValidate
             autoComplete="off"
             >
-            <TextField
-                id="outlined-basic" label={inputType} variant="outlined"
-                onChange = {(e)=>onInputChange(e.target.value)}
-                onKeyPress={(e) => { e.key === 'Enter' && submitInput(e) }}
-                value={value}
-            />
-            <Button
-                onClick={(e)=>submitInput(e)}
-            >+
-            </Button>
+                {
+                    input.length === 0
+                    ?
+                    <>
+                        <TextField
+                        id="outlined-basic" label={inputType} variant="outlined"
+                        onChange = {onChange}
+                        value={input}
+                        />
+                        <Button
+                            disabled
+                        >+
+                        </Button>
+                    </>
+                    :
+                    <>
+                        <TextField
+                        id="outlined-basic" label={inputType} variant="outlined"
+                        onChange = {onChange}
+                        onKeyPress={(e) => { e.key === 'Enter' && submitInput(e) }}
+                        value={input}
+                        />
+                        <Button
+                            onClick={(e)=>submitInput(e)}
+                        >+
+                        </Button>
+                    </>
+
+                }
         </Box>
 
     )
